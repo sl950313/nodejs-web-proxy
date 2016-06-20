@@ -1,0 +1,443 @@
+<!DOCTYPE html>  
+<html>  
+<head>   
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+<title>科大学生信息_管理员</title>  
+<style type="text/css">  
+html{height:100%}  
+body{height:100%;margin:0px;padding:0px}  
+#container{height:100%}  
+</style>  
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=aLgHh5Uy7UfCMas9BTC1oTFRhTF4XSva"></script>
+<script language="javascript" type="text/javascript" src="public/javascript/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js"></script>
+</head>  
+
+<STYLE type="text/css">
+html{height:100%}
+body{
+   height:100%;
+   background: #ebebeb;
+   font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","\9ED1\4F53",Arial,sans-serif;
+   color: #222;
+   font-size: 12px;
+}
+#container1{height:100%;width:100%;}
+#r-result{width:100%;}
+*{padding: 0px;margin: 0px;}
+.test{width:100%;height:100%;border:solid 0px #000;
+   background: #CCCCCC;}
+<!--
+.top_div{
+   background: #008ead;
+   width: 100%;
+   height: 0%;
+}
+-->
+.ipt{
+   border: 1px solid #d3d3d3;
+   padding: 5px 5px;
+   width: 30%;
+   border-radius: 4px;
+   padding-left: 35px;
+   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+   box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+   -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+   -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+}
+.ipt:focus{
+   border-color: #66afe9;
+   outline: 0;
+   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+   box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+}
+.u_logo{
+   background: url("public/images/username.png") no-repeat;
+   padding: 10px 10px;
+   position: absolute;
+   top: 43px;
+   left: 40px;
+
+}
+.p_logo{
+   background: url("public/images/password.png") no-repeat;
+   padding: 10px 10px;
+   position: absolute;
+   top: 12px;
+   left: 40px;
+}
+a{
+   text-decoration: none;
+}
+.tou{
+   background: url("public/images/tou.png") no-repeat;
+   width: 97px;
+   height: 92px;
+   position: absolute;
+   top: -87px;
+   left: 140px;
+}
+.left_hand{
+   background: url("public/images/left_hand.png") no-repeat;
+   width: 32px;
+   height: 37px;
+   position: absolute;
+   top: -38px;
+   left: 150px;
+}
+.right_hand{
+   background: url("public/images/right_hand.png") no-repeat;
+   width: 32px;
+   height: 37px;
+   position: absolute;
+   top: -38px;
+   right: -64px;
+}
+.initial_left_hand{
+   background: url("public/images/hand.png") no-repeat;
+   width: 30px;
+   height: 20px;
+   position: absolute;
+   top: -12px;
+   left: 100px;
+}
+.initial_right_hand{
+   background: url("public/images/hand.png") no-repeat;
+   width: 30px;
+   height: 20px;
+   position: absolute;
+   top: -12px;
+   right: -112px;
+}
+.left_handing{
+   background: url("public/images/left-handing.png") no-repeat;
+   width: 30px;
+   height: 20px;
+   position: absolute;
+   top: -24px;
+   left: 139px;
+}
+.right_handinging{
+   background: url("public/images/right_handing.png") no-repeat;
+   width: 30px;
+   height: 20px;
+   position: absolute;
+   top: -21px;
+   left: 210px;
+}
+
+</STYLE>
+<body>  
+<table border='0' height="100%">
+   <tr height="100%">
+      <td style="width:10%;height:100%">
+         <DIV style="background: rgb(119,136,153); margin: -100px auto auto; border: 1px solid rgb(231, 231, 231); border-image: none; width: 400px; height: 100%; text-align: left;">
+            <!--
+            <DIV style="width: 165px; height: 96px; position: absolute;">
+               <DIV class="tou"></DIV>
+               <DIV class="initial_left_hand" id="left_hand"></DIV>
+               <DIV class="initial_right_hand" id="right_hand"></DIV>
+            </DIV>
+            -->
+            <P style="padding: 30px 0px 10px; position: relative;">
+            </P>
+            <P style="position: relative;">
+            <P id="UserID" style="color:rgb(255, 255, 255);font-size:20px"><h2></h2></P><br>
+            <DIV>
+               <select id="depatment">
+                  <option value="计算机科学与技术">计算机科学与技术</option>
+                  <option value="信息学院">信息学院</option>
+                  <option value="物理学院">物理学院</option>
+                  <option value="数学学院">数学学院</option>
+               </select>
+               <!--
+               <select>
+                  <option value="boy">男</option>
+                  <option value="girl">女</option>
+               </select>
+               -->
+            </DIV>
+            <P style="padding: 30px 0px 10px; position: relative;">
+            </P>
+            <Input class="ipt" id="date0" placeholder="日常轨迹查询" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'date2\')}'})"/>
+            <a id="dailySearch" style="font-size:10px;color:rgb(255,255,0)" href='#' onclick="searchDateInfo()">日常轨迹查询</a><br>
+            <P style="padding: 10px 0px 10px; position: relative;">
+            </P>
+            <Input class="ipt" id="date1" placeholder="起始日期" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'date2\')}'})"/>
+            <Input class="ipt" id="date2" placeholder="结束日期" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'date1\')}'})"/>
+            <a id="rltSearch" style="font-size:10px;color:rgb(255,255,0)" href='#' onclick="showRLT()">热力图查询</a>
+            </P>
+         <div style="text-align:center;">
+         </div>
+      </td>
+      <td >
+         <div class="test" id="container1">
+         </div>
+      </td>
+   </tr>
+</table>
+</body>
+</html>
+<script>
+</script>
+<script type="text/javascript"> 
+$(document).ready(function () {
+      var href = window.location.href;
+      //$("#UserID").attr("value") = GetArgsFromHref(href, "UserID");
+      $("#UserID").html(GetArgsFromHref(href, "UserID"));
+      });
+function GetArgsFromHref(sHref, sArgName)
+{
+   var args    = sHref.split("?");
+   var retval = "";
+
+   if(args[0] == sHref) /*参数为空*/
+   {
+      return retval; /*无需做任何处理*/
+   } 
+   var str = args[1];
+   args = str.split("&");
+   for(var i = 0; i < args.length; i ++)
+   {
+      str = args[i];
+      var arg = str.split("=");
+      if(arg.length <= 1) continue;
+      if(arg[0] == sArgName) retval = arg[1];
+   }
+   return retval;
+}
+map = new BMap.Map("container1");          // 创建地图实例  
+var point = new BMap.Point(117.2693480000, 31.8433850000);
+map.centerAndZoom(point, 17);                 // 初始化地图，设置中心点坐标和地图级别  
+
+var showtraffic = true;
+var traffic = new BMap.TrafficLayer();        // 创建交通流量图层实例      
+map.addControl(new BMap.NavigationControl());    
+map.addControl(new BMap.ScaleControl());    
+map.addControl(new BMap.OverviewMapControl());    
+map.addControl(new BMap.MapTypeControl());    
+map.setCurrentCity("合肥"); // 仅当设置城市信息时，MapTypeControl的切换功能才能可用
+map.enableScrollWheelZoom(true); 
+
+todaySearch = false;
+currentBeenShown = false;
+heatmapShow = false;
+_marker = new Array();
+_walking = new Array();
+_data = [];
+_lable = new Array();
+_lableStr = new Array();
+var heatmapOverlay; 
+var searchInfo = [];
+var ZMax = 10;
+var ZIndex = -1;
+var opts = {
+           title : "时间位置信息" , // 信息窗口标题
+};
+
+function showRLT() {
+   if (heatmapShow) {
+      return ;
+   }
+   if ($("#date1").val() == "" || $("#date2").val() == "") {
+      return ;
+   }
+   /*
+   var re = /\d{4}-\d{2}-\d{2}/;
+   if (!re.test($("#date1").val()) || !re.test($("#date2").val())) {
+      alert("here not fit " + $("#date1").val() + "\t" + $("#date2").val());
+      return ;
+   }
+   */
+   heatmapShow = true;
+   $.post("/search_rlt", {
+         UserID:$("#UserID").text(),
+         dateBegin:$("#date1").val(),
+         dateEnd:$("#date2").val()
+         }, function(data, status) {
+         _data = JSON.parse(data);
+         //31.8445660000,117.2635830000
+         //var point = new BMap.Point(117.2653500000, 31.8384410000);
+         //alert("data.length = " + _data.length);
+         if(!isSupportCanvas()){
+            alert('热力图目前只支持有canvas支持的浏览器,您所使用的浏览器不能使用热力图功能~')
+         } else {
+         }
+
+         var points = new Array();
+         for (var i = 0; i < _data.length; ++i) {
+            var _newPoints = {};
+            _newPoints['lat'] = _data[i].lat;
+            _newPoints['lng'] = _data[i].lng;
+            _newPoints['count'] = _data[i].count + 50;
+            points[points.length] = _newPoints;
+         }
+         heatmapOverlay = new BMapLib.HeatmapOverlay({"radius":30});
+         map.addOverlay(heatmapOverlay);
+         heatmapOverlay.setDataSet({data:points,max:100});
+         for (var i = 0; i < _walking.length; ++i) {
+            _walking[i].clearResults();
+         }
+         for (var i = 0; i < _marker.length; ++i) {
+            map.removeOverlay(_marker[i]);
+         }
+         setTimeout(function() {
+               heatmapOverlay.show();
+               });
+
+         });
+}
+
+function searchDateInfo() {
+   if (todaySearch) {
+      return ;
+   }
+   todaySearch = true;
+   var month, day;
+   //_date = $dp.cal.getDateStr("yyyy-MM-dd");
+   if ($("#date0").val() == "") {
+      return ;
+   }
+   $.post("/search", {
+      UserID:$("#UserID").text(),
+      _Date:$("#date0").val()
+      }, function(data, status) {
+      for (var i = 0; i < _walking.length; ++i) {
+         _walking[i].clearResults();
+      }
+      for (var i = 0; i < _marker.length; ++i) {
+         map.removeOverlay(_marker[i]);
+      }
+      //map.removeOverlay(heatmapOverlay);
+      if (heatmapShow) {
+      heatmapOverlay.hide();
+      heatmapShow = false;
+      }
+
+         point = JSON.parse(data);
+         searchInfo = point;
+      if (point.length != 0)  {
+         var points = new Array();
+         for (var i = 0; i < point.length; ++i) {
+            points[i] = new BMap.Point(point[i]['LONGITUDE'], point[i]['LATITUDE']); 
+         }
+         _lableStr = [];
+         _lable = [];
+         _marker = [];
+         ShowTrace(0, points);
+      }
+      else alert("recv data maybe not right");
+      });
+   todaySearch = false;
+}
+
+processDate = function(_data, _data2) {
+   var data = new Date(_data * 1000);
+   var data2 = new Date(_data2 * 1000);
+   Y = data.getFullYear() + '-';
+   M = (data.getMonth()+1 < 10 ? '0'+(data.getMonth()+1) : data.getMonth()+1) + '-';
+   D = data.getDate() + ' ';
+   h = data.getHours() + ':';
+   m = data.getMinutes() + ':';
+   s = data.getSeconds()+1 < 10 ? '0' + (data.getSeconds()+1) : data.getSeconds()+1;
+
+   h2 = data2.getHours() + ":";
+   m2 = data2.getMinutes() + ':';
+   s2 = data2.getSeconds()+1 < 10 ? '0' + (data2.getSeconds()+1) : data2.getSeconds()+1;
+
+   //return Y + M + D + h + m + s + "~" + h2 + m2 + s2;
+   return h + m + s + "~" + h2 + m2 + s2;
+}
+
+openInfo = function(content, e) {
+   var p = e.target;
+   var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+   var content_t = content.replace(/<h3>/g, "");
+   var content = content_t.replace(/<\/h3>/g, "");
+   var sContent = "<textarea style='font-size:14px;font-weight:blod' rows='4' cols='40'>" + content + "</textarea>";
+   var infoWindow = new BMap.InfoWindow(sContent, opts);
+   //var infoWindow = new BMap.InfoWindow(sContent,opts);
+   map.openInfoWindow(infoWindow,point);
+}
+
+addClickHandler = function(content, marker) {
+   marker.addEventListener("click", function(e) {
+         openInfo(content, e);
+         });
+}
+removeClickHandler = function(content, marker) {
+   marker.removeEventListener("click", function(e) {
+         console.log("event has been removed");
+         });
+}
+
+ShowTrace =  function (i, point) {
+   if (i == point.length) {
+      currentBeenShown = true;
+      return ;
+   }
+   console.log(point);
+   var duplicate = false;
+   var duplicate_j = -1;
+   for (var j = 0; j < i ; ++j) {
+      if (point[i].lng == point[j].lng && point[i].lat == point[j].lat) {
+      //if (searchInfo[i]['LOCATION'] == searchInfo[j]['LOCATION']) {
+         duplicate = true;
+         duplicate_j = j;
+         break;
+      }
+   }
+   _marker[_marker.length] = new BMap.Marker(point[i]);
+   var detail = searchInfo[i]['LOCATION_DETAIL'];
+   if (detail == "NULL") detail = "";
+   var time = processDate(searchInfo[i].UNIXTIME, searchInfo[i].UNIXTIME_END);
+   var position = searchInfo[i]['LOCATION'] + detail; 
+   //_lableStr[_lableStr.length] = ("" + time + "\n" + position + detail + "");
+   _lableStr[_lableStr.length] = ("<h3>" + time + " " + position + detail + "</h3>");
+   var info_t = {};
+   info_t.time = time;
+   info_t.position = position;
+   //infoWindowContent[infoWindowContent.length] = info_t;
+   //_lableStr[_lableStr.length] = ("<h3>" + processDate(searchInfo[i].UNIXTIME, searchInfo[i].UNIXTIME_END) + "\n" + searchInfo[i]['LOCATION'] + detail + "</h3>");
+   setTimeout(function() {
+         if (!duplicate) {
+            _lable[_lable.length] = new BMap.Label(_lableStr[_lableStr.length - 1], {offset:new BMap.Size(20,-10)});
+            map.addOverlay(_marker[_marker.length - 1]);
+            _marker[_marker.length - 1].setLabel(_lable[_lable.length - 1]);
+            addClickHandler(_lableStr[_lableStr.length - 1], _marker[_marker.length - 1]);
+            } else {
+            _lableStr[duplicate_j] = _lableStr[duplicate_j] + "\n" + _lableStr[_lableStr.length - 1];
+            //infoWindow[duplicate_j].time += infoWindowContent[infoWindowContent.length - 1].time;
+            //infoWindow[duplicate_j].position += "\n" + infoWindowContent[infoWindowContent.length - 1].position;
+            //console.log("_lableStr[" + duplicate_j + "] = " + _lableStr[duplicate_j]);
+            _lable[_lable.length] = new BMap.Label(_lableStr[duplicate_j], {offset:new BMap.Size(20,-10)}); 
+            _marker[duplicate_j].setLabel(_lable[_lable.length - 1]);
+            //removeClickHandler(_marker[duplicate_j]);
+            addClickHandler(_lableStr[duplicate_j], _marker[duplicate_j]);
+            }
+            map.centerAndZoom(point[i], 18);
+            setTimeout(ShowTrace(i + 1, point), 2000);
+         }, 2000);
+};
+function setGradient(){
+   /*格式如下所示:
+     {
+      0:'rgb(102, 255, 0)',
+      .5:'rgb(255, 170, 0)',
+      1:'rgb(255, 0, 0)'
+      }*/
+   var gradient = {};
+   var colors = document.querySelectorAll("input[type='color']");
+   colors = [].slice.call(colors,0);
+   colors.forEach(function(ele){
+         gradient[ele.getAttribute("data-key")] = ele.value; 
+         });
+   heatmapOverlay.setOptions({"gradient":gradient});
+}
+function isSupportCanvas(){
+   var elem = document.createElement('canvas');
+   return !!(elem.getContext && elem.getContext('2d'));
+}
+</script>  

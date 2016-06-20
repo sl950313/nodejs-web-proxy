@@ -1,0 +1,43 @@
+
+database.js	Connect to the db
+
+database.js	Use TEST Success
+start
+
+i = 0
+i = 5
+i = 10
+i = 15
+i = 20
+i = 25
+i = 30
+i = 35
+i = 40
+i = 45
+i = 50
+i = 55
+i = 60
+i = 65
+i = 70
+i = 75
+FATAL ERROR: CALL_AND_RETRY_2 Allocation failed - process out of memory
+程序执行完毕。
+45568035
+482045
+data2[0] = [object Object]
+data2[0]['UserID'] = PB13207032
+data2[0]['Latitude'] = 31.8390000000
+data2[0]['Longitude'] = 117.2652510000
+data2[0]['UnixTime'] = 1450395783
+data2[0]['Location'] = 东区食堂
+data2[1]['UserID'] = PB13207032
+data2[1]['Latitude'] = 31.839403
+data2[1]['Longitude'] = 117.263779
+data2[1]['UnixTime'] = 1450599465
+data2[1]['Location'] = 东区图书馆
+
+database.js	Connect to the db
+
+database.js	Use TEST Success
+start
+
